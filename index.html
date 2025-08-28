@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Himanshu Kumar — Code. Circuits. Creativity.</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Portfolio of Himanshu Kumar, an innovator focused on robotics, IoT, AI, and embedded systems. Senior ATL Student In-Charge building practical hardware and software solutions." />
+    <meta name="keywords" content="Himanshu Kumar, robotics, IoT, AI, embedded systems, Arduino, ESP8266, Raspberry Pi, Python, C++, ATL, Jamshedpur" />
+    <link rel="canonical" href="https://yourdomain.com/" />
+    <meta property="og:title" content="Himanshu Kumar — Code. Circuits. Creativity." />
+    <meta property="og:description" content="Innovator in robotics, IoT, AI & embedded systems. Winner of QUANTUM and HUNCH competitions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="https://yourdomain.com/avatar.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"Himanshu Kumar",
+      "url":"https://yourdomain.com/",
+      "jobTitle":"Student Innovator",
+      "knowsAbout":["Robotics","IoT","AI","Embedded Systems"],
+      "sameAs":["https://github.com/Mors369","https://instagram.com/Mors__369"]
+    }
+    </script>
+
+    <!-- Fonts & Favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Libs (defer) -->
+    <script defer src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- App -->
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#hero" onclick="scrollToSection('hero')">Home</a></li>
+        <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
+        <li><a href="#projects" onclick="scrollToSection('projects')">Hardware</a></li>
+        <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
+        <li><a href="#gallery" onclick="scrollToSection('gallery')">Gallery</a></li>
+        <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header>
+      <div class="container">
+        <div class="hero-grid" id="hero">
+          <div>
+            <h1 id="name-hover-effect">Himanshu Kumar</h1>
+            <div class="tagline">Code. Circuits. Creativity.</div>
+            <div class="quote">I build practical hardware + software solutions that scale from classroom to field.</div>
+
+            <div style="margin-top: 24px">
+              <span class="glow-rotate" id="special-quote">"Make your dreams so high that your failure is above others’ success."</span>
+            </div>
+
+            <div class="cta-row">
+              <button class="btn primary" id="open-projects-picker">View Projects</button>
+              <a class="btn" href="mailto:himanshujsr462@gmail.com">Email Me</a>
+              <a class="btn" href="https://instagram.com/Mors__369" target="_blank" rel="noopener noreferrer">@Mors__369</a>
+            </div>
+
+            <div style="margin-top: 16px" class="muted">
+              Senior ATL Student In-Charge — Innovator focused on robotics, IoT, AI & embedded systems
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="profile">
+              <div class="avatar" aria-label="Himanshu Kumar Avatar">HK</div>
+              <div class="info">
+                <h3>Himanshu Kumar</h3>
+                <p class="muted">Innovator • Robotics & AI Developer • ATL Leader</p>
+              </div>
+            </div>
+            <div><strong>Achievements:</strong><div style="margin-top: 6px">Winner — QUANTUM (LFS Telco), HUNCH (DPS Sakchi)</div></div>
+            <div><strong>Skills:</strong><div style="margin-top: 6px">Arduino • ESP8266 • Raspberry Pi • Python • C++ • Embedded • Web • IoT</div></div>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ABOUT -->
+      <section id="about" class="panel shiny-border">
+        <h3 class="section-title">About Me</h3>
+        <p class="muted">
+          As the Senior Student In-Charge at my school's Atal Tinkering Lab, I lead teams and build end-to-end prototypes that merge the physical and digital worlds. My work centers on solving practical problems in agritech, robotics, and creative AI, with a focus on delivering impactful solutions using resourceful and efficient design.
+        </p>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="panel shiny-border">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+          <h3 class="section-title">Hardware & Featured Projects</h3>
+          <div class="muted small">Selected work: prototype → field-tested → competition-ready</div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Existing hardware cards ... -->
+          <article class="project shiny-border" tabindex="0">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">
+                <!-- icon -->
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M17 2H7C4.239 2 2 4.239 2 7v10c0 2.761 2.239 5 5 5h10c2.761 0 5-2.239 5-5V7c0-2.761-2.239-5-5-5Z" stroke="#e03131" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 12l3-3 3 3 4-4" stroke="#e03131" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="pj-title">Advanced Farm Tech</div>
+            </div>
+            <div class="pj-desc">Voice & web app control (Blynk-style) IoT system — remote pumps, lights and multi-sensor monitoring. Deployed prototypes tested in real environments.</div>
+          </article>
+
+          <article class="project shiny-border" tabindex="0">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2.69c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 18.213 2 12.69 6.477 2.69 12 2.69Z" stroke="#e03131" stroke-width="2" stroke-linecap="round"/><path d="M7.64 10.33 14.47 15.48" stroke="#e03131" stroke-width="2" stroke-linecap="round"/><path d="M12 12.69 16.36 14.39" stroke="#e03131" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="pj-title glow-rotate" style="display:inline-block">Freemium Novel App (Idea)</div>
+            </div>
+            <div class="pj-desc">Product concept & prototype for a freemium publishing platform with AI-assisted tools for writers and comic creators.</div>
+          </article>
+
+          <article class="project shiny-border" tabindex="0">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M14 8V5a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" stroke="#e03131" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="8" width="16" height="12" rx="2" stroke="#e03131" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14h4M4 12H2M22 12h-2" stroke="#e03131" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="pj-title">Line Following Robot</div>
+            </div>
+            <div class="pj-desc">Autonomous robot with tuned sensor analytics and PID control — awarded for speed and accuracy.</div>
+          </article>
+
+          <article class="project shiny-border" tabindex="0">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 20h16" stroke="#e03131" stroke-width="2" stroke-linecap="round"/><path d="M6 20V12a3 3 0 0 1 3-3h2l2-3 2 1-1 3h2a3 3 0 0 1 3 3v7" stroke="#e03131" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15.5" cy="7" r="1.5" stroke="#e03131" stroke-width="2"/></svg>
+              </div>
+              <div class="pj-title">ESP8266 Robotic Arm</div>
+            </div>
+            <div class="pj-desc">Wi-Fi controlled 4–6 DOF arm using ESP8266 + PCA9685. Web UI joystick & presets; optional IK.</div>
+          </article>
+
+          <article class="project shiny-border" tabindex="0">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="8" rx="2" stroke="#e03131" stroke-width="2"/><circle cx="7" cy="19" r="2" stroke="#e03131" stroke-width="2"/><circle cx="17" cy="19" r="2" stroke="#e03131" stroke-width="2"/><path d="M4 10l2-4h12l2 4" stroke="#e03131" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="pj-title">Battle Bot — FlySky FS-i6</div>
+            </div>
+            <div class="pj-desc">Differential drive with mixer, L298N drivers, 775/555 weapon via relay/ESC, failsafe + arming, turbo on CH6.</div>
+          </article>
+
+          <!-- NEW: Mors.studio & Sidcup Golf moved here -->
+          <a class="project shiny-border project-link" href="https://mors-369.github.io/portfolio-animated/animated/" target="_blank" rel="noopener noreferrer">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">🎨</div>
+              <div class="pj-title">Mors.studio (Portfolio)</div>
+            </div>
+            <div class="pj-desc">Animated portfolio experiment with smooth interactions.</div>
+          </a>
+
+          <a class="project shiny-border project-link" href="https://mors-369.github.io/portfolio-animated//sidcup-golf/" target="_blank" rel="noopener noreferrer">
+            <div class="pj-header">
+              <div class="thumb" aria-hidden="true">⛳</div>
+              <div class="pj-title">Sidcup Golf (Clone)</div>
+            </div>
+            <div class="pj-desc">UI/UX practice clone demonstrating scroll effects and layout.</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SERVICES (new) -->
+      <section id="services" class="panel shiny-border">
+        <h3 class="section-title">Services</h3>
+        <div class="services-grid">
+          <article class="service-card">
+            <h4>Web Development</h4>
+            <p class="muted">Landing pages, portfolios, and dashboards with fast, responsive UI.</p>
+            <ul class="muted">
+              <li>HTML/CSS/JS, React</li>
+              <li>Performance & SEO basics</li>
+              <li>Hosting & deployment</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h4>Novel App</h4>
+            <p class="muted">Freemium publishing app concept with AI tools for writers & comic creators.</p>
+            <ul class="muted">
+              <li>Reader & creator tooling</li>
+              <li>Monetization-ready design</li>
+              <li>Prototyping & UX flows</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h4>Logo Design</h4>
+            <p class="muted">Clean, memorable marks and basic brand kits for small projects.</p>
+            <ul class="muted">
+              <li>Modern, minimal styles</li>
+              <li>SVG delivery</li>
+              <li>Color & typography guide</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery" class="panel shiny-border">
+        <h3 class="section-title">Gallery & Demos</h3>
+        <div class="gallery-grid">
+          <div class="place">
+            <img src="WhatsApp Image 2025-08-17 at 12.46.50_073fb031.jpg" class="gallery-image" alt="Farm Tech Demo" loading="lazy" />
+            <div class="svg-box">🌾 Farm Tech Demo</div>
+            <div class="label muted">Remote UI & Sensor Logs</div>
+          </div>
+          <div class="place">
+            <img src="https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=1974&auto=format&fit=crop" class="gallery-image" alt="Line-Follower Robot" loading="lazy" />
+            <div class="svg-box">🤖 Line-Follower Prototype</div>
+            <div class="label muted">High-precision sensors • PID tuning</div>
+          </div>
+          <div class="place">
+            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop" class="gallery-image" alt="App Mockups" loading="lazy" />
+            <div class="svg-box">📱 App Mockups</div>
+            <div class="label muted">UI wireframes • AI features</div>
+          </div>
+          <div class="place">
+            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974&auto=format&fit=crop" class="gallery-image" alt="ATL Workshop" loading="lazy" />
+            <div class="svg-box">🛠️ ATL Workshops</div>
+            <div class="label muted">Student mentorship & training</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="panel shiny-border">
+        <h3 class="section-title">Contact</h3>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="label">Email</div>
+            <div class="contact-link">
+              <span>✉️</span>
+              <a href="mailto:himanshujsr462@gmail.com">himanshujsr462@gmail.com</a>
+            </div>
+
+            <div class="label">Instagram</div>
+            <div class="contact-link">
+              <span>📷</span>
+              <a href="https://instagram.com/Mors__369" target="_blank" rel="noopener noreferrer">@Mors__369</a>
+            </div>
+
+            <div class="label">GitHub</div>
+            <div class="contact-link">
+              <span>🐙</span>
+              <a href="https://github.com/Mors369" target="_blank" rel="noopener noreferrer">@Mors369</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="label">Quick Pitch</div>
+            <p class="muted">I build practical hardware+software solutions — IoT agriculture, autonomous robots, and creative AI tools — using resourceful design and rapid prototyping.</p>
+            <div style="margin-top: 12px">
+              <button class="btn primary" onclick="window.location='mailto:himanshujsr462@gmail.com'">Get in Touch</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Himanshu Kumar — Code. Circuits. Creativity.</footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- Projects Picker Modal -->
+    <dialog id="projects-modal">
+      <form method="dialog" class="modal-card">
+        <h3>Select a project</h3>
+        <div class="modal-actions">
+          <a class="btn primary" href="https://mors-369.github.io/portfolio-animated/animated/" target="_blank" rel="noopener noreferrer">Mors.studio</a>
+          <a class="btn" href="https://mors-369.github.io/portfolio-animated//sidcup-golf/" target="_blank" rel="noopener noreferrer">Sidcup Golf</a>
+        </div>
+        <button class="btn close-btn" value="cancel">Close</button>
+      </form>
+    </dialog>
+  </body>
+</html>
