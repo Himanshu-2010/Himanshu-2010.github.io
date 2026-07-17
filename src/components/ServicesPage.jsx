@@ -11,26 +11,77 @@ import DATA from '../data/info.json';
 const SERVICES = DATA.services;
 
 function MediaSlot({ video, images, label }) {
-  const src = images && images[0];
-  if (video) {
+  const imgs = (images || []).filter(Boolean);
+  const media = [
+    ...(video ? [{ type: 'video', src: video }] : []),
+    ...imgs.map((src) => ({ type: 'image', src })),
+  ];
+  const [active, setActive] = useState(0);
+  const [broken, setBroken] = useState({});
+
+  if (media.length === 0) {
     return (
-      <div className="relative h-44 rounded-xl overflow-hidden border border-white/10 bg-black/40">
-        <video src={video} controls className="w-full h-full object-cover" />
+      <div className="relative h-44 rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-white/0 flex items-center justify-center">
+        <span className="font-body text-white/30 text-xs uppercase tracking-widest">
+          Media soon
+        </span>
       </div>
     );
   }
-  if (src) {
-    return (
-      <div className="relative h-44 rounded-xl overflow-hidden border border-white/10 bg-black/40">
-        <img src={src} alt={label} className="w-full h-full object-cover" />
-      </div>
-    );
-  }
+
+  const current = media[Math.min(active, media.length - 1)];
+
   return (
-    <div className="relative h-44 rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-white/0 flex items-center justify-center">
-      <span className="font-body text-white/30 text-xs uppercase tracking-widest">
-        Media soon
-      </span>
+    <div>
+      <div className="relative h-44 rounded-xl overflow-hidden border border-white/10 bg-black/40">
+        {current.type === 'video' ? (
+          <video src={current.src} controls className="w-full h-full object-cover" />
+        ) : broken[current.src] ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="font-body text-white/30 text-xs uppercase tracking-widest">
+              Image not found
+            </span>
+          </div>
+        ) : (
+          <img
+            src={current.src}
+            alt={label}
+            className="w-full h-full object-cover"
+            onError={() => setBroken((b) => ({ ...b, [current.src]: true }))}
+          />
+        )}
+      </div>
+
+      {media.length > 1 && (
+        <div className="flex gap-2 mt-2 overflow-x-auto">
+          {media.map((m, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`relative w-14 h-12 shrink-0 rounded-lg overflow-hidden border transition ${
+                i === active
+                  ? 'border-[var(--accent)]'
+                  : 'border-white/10 hover:border-white/30'
+              }`}
+            >
+              {m.type === 'video' ? (
+                <div className="w-full h-full flex items-center justify-center bg-black/50 text-white/70 text-xs">
+                  ▶
+                </div>
+              ) : broken[m.src] ? (
+                <div className="w-full h-full bg-white/5" />
+              ) : (
+                <img
+                  src={m.src}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  onError={() => setBroken((b) => ({ ...b, [m.src]: true }))}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
