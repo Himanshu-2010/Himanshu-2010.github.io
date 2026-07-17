@@ -19,97 +19,115 @@ const tiers = [
 
 export default function LandingDemo() {
   return (
-    <div className="font-body text-white">
-      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div className="font-body text-white relative overflow-hidden">
+      <div className="pointer-events-none absolute -top-32 right-0 w-[60vw] h-[60vw] max-w-2xl max-h-2xl rounded-full bg-[var(--accent2)]/15 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/3 -left-20 w-[40vw] h-[40vw] max-w-xl max-h-xl rounded-full bg-[var(--accent)]/10 blur-[120px]" />
+
+      <header className="relative max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
         <div className="font-heading italic text-2xl">Northwind</div>
         <a
           href="#l-pricing"
-          className="bg-white text-black text-sm font-medium rounded px-5 py-2 hover:scale-[1.03] transition"
+          className="bg-white text-black text-sm font-medium rounded-full px-6 py-2.5 hover:scale-[1.04] transition"
         >
           Get started
         </a>
       </header>
 
-      <section className="max-w-6xl mx-auto px-6 py-20 text-center">
-        <div className="text-xs tracking-[0.3em] uppercase text-[var(--accent)] mb-4">
-          Now in early access
+      <section className="relative max-w-6xl mx-auto px-6 pt-16 pb-20 text-center">
+        <div className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[var(--accent)] mb-6 px-4 py-1.5 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/5">
+          ✦ Now in early access
         </div>
-        <h1 className="font-heading italic text-5xl md:text-7xl text-white mb-6">
-          Ship your startup, faster.
+        <h1 className="font-heading italic text-6xl md:text-8xl text-white mb-6 leading-[0.95]">
+          Ship your startup,<br />faster.
         </h1>
-        <p className="text-white/65 max-w-xl mx-auto mb-8">
+        <p className="text-white/60 text-lg max-w-xl mx-auto mb-10">
           The all-in-one platform for founders who want to launch without the busywork.
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
           <a
             href="#l-pricing"
-            className="bg-white text-black text-sm font-medium rounded px-6 py-3 hover:scale-[1.03] transition"
+            className="bg-white text-black text-sm font-medium rounded-full px-7 py-3.5 hover:scale-[1.04] transition shadow-[0_8px_30px_rgba(255,255,255,0.15)]"
           >
             Start free
           </a>
           <a
             href="#l-features"
-            className="liquid-glass-strong text-sm rounded px-6 py-3 hover:scale-[1.03] transition"
+            className="border border-white/20 text-sm rounded-full px-7 py-3.5 hover:bg-white/5 transition"
           >
             See features
           </a>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10 flex flex-wrap justify-center gap-6 text-white/40 text-sm">
+      <section className="relative max-w-6xl mx-auto px-6 pb-16 flex flex-wrap justify-center items-center gap-8 opacity-50">
         {['Acme', 'Globex', 'Initech', 'Umbrella', 'Soylent'].map((b) => (
-          <span key={b} className="font-heading italic text-lg">{b}</span>
+          <span key={b} className="font-heading italic text-xl">{b}</span>
         ))}
       </section>
 
-      <section id="l-features" className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="font-heading italic text-3xl text-white mb-8 text-center">Everything you need</h2>
+      <section id="l-features" className="relative max-w-6xl mx-auto px-6 py-16">
+        <h2 className="font-heading italic text-4xl text-white mb-10 text-center">Everything you need</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f) => (
-            <div key={f.title} className="liquid-glass rounded-2xl p-6">
-              <div className="text-2xl mb-3">{f.icon}</div>
-              <div className="font-heading italic text-xl text-white mb-1">{f.title}</div>
+            <div
+              key={f.title}
+              className="rounded-2xl p-6 bg-white/[0.03] border border-white/10 hover:border-white/25 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="text-3xl mb-4">{f.icon}</div>
+              <div className="font-heading italic text-xl text-white mb-1.5">{f.title}</div>
               <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-16">
-        <h2 className="font-heading italic text-3xl text-white mb-8 text-center">How it works</h2>
-        <div className="grid sm:grid-cols-3 gap-6">
+      <section className="relative max-w-4xl mx-auto px-6 py-16">
+        <h2 className="font-heading italic text-4xl text-white mb-12 text-center">How it works</h2>
+        <div className="grid sm:grid-cols-3 gap-8">
           {steps.map(([n, t, d]) => (
             <div key={n} className="text-center">
-              <div className="font-mono text-sm text-[var(--accent)] mb-2">{n}</div>
-              <div className="font-heading italic text-2xl text-white mb-1">{t}</div>
+              <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center font-mono text-sm text-[var(--accent)] border border-[var(--accent)]/30 bg-[var(--accent)]/5">
+                {n}
+              </div>
+              <div className="font-heading italic text-2xl text-white mb-1.5">{t}</div>
               <p className="text-white/60 text-sm">{d}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="l-pricing" className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="font-heading italic text-3xl text-white mb-8 text-center">Simple pricing</h2>
-        <div className="grid sm:grid-cols-3 gap-5">
+      <section id="l-pricing" className="relative max-w-5xl mx-auto px-6 py-16">
+        <h2 className="font-heading italic text-4xl text-white mb-10 text-center">Simple pricing</h2>
+        <div className="grid sm:grid-cols-3 gap-5 items-start">
           {tiers.map((t) => (
             <div
               key={t.name}
-              className={`rounded-2xl p-6 ${
-                t.hl ? 'bg-white text-black' : 'liquid-glass text-white'
+              className={`rounded-3xl p-7 transition-all duration-300 ${
+                t.hl
+                  ? 'bg-white text-black scale-[1.04] shadow-[0_12px_40px_rgba(255,255,255,0.18)]'
+                  : 'bg-white/[0.03] border border-white/10 text-white hover:border-white/25'
               }`}
             >
+              {t.hl && (
+                <div className="text-[0.65rem] uppercase tracking-widest font-medium text-[var(--accent2)] mb-2">
+                  Most popular
+                </div>
+              )}
               <div className={`text-xs uppercase tracking-wider ${t.hl ? 'text-black/60' : 'text-white/50'}`}>
                 {t.name}
               </div>
-              <div className="font-heading italic text-4xl my-2">{t.price}</div>
-              <ul className={`text-sm space-y-1 mb-5 ${t.hl ? 'text-black/70' : 'text-white/65'}`}>
+              <div className="font-heading italic text-5xl my-3">{t.price}</div>
+              <ul className={`text-sm space-y-2 mb-6 ${t.hl ? 'text-black/70' : 'text-white/65'}`}>
                 {t.feats.map((f) => (
-                  <li key={f}>• {f}</li>
+                  <li key={f} className="flex items-center gap-2">
+                    <span className={t.hl ? 'text-[var(--accent2)]' : 'text-[var(--accent4)]'}>✓</span>
+                    {f}
+                  </li>
                 ))}
               </ul>
               <a
                 href="#l-pricing"
-                className={`block text-center text-sm font-medium rounded px-4 py-2 transition hover:scale-[1.03] ${
+                className={`block text-center text-sm font-medium rounded-full px-4 py-2.5 transition hover:scale-[1.03] ${
                   t.hl ? 'bg-black text-white' : 'bg-white text-black'
                 }`}
               >
@@ -120,17 +138,17 @@ export default function LandingDemo() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <h2 className="font-heading italic text-4xl text-white mb-4">Ready when you are</h2>
+      <section className="relative max-w-4xl mx-auto px-6 py-24 text-center">
+        <h2 className="font-heading italic text-5xl text-white mb-6">Ready when you are</h2>
         <a
           href="#l-pricing"
-          className="inline-block bg-white text-black text-sm font-medium rounded px-6 py-3 hover:scale-[1.03] transition"
+          className="inline-block bg-white text-black text-sm font-medium rounded-full px-8 py-4 hover:scale-[1.04] transition shadow-[0_8px_30px_rgba(255,255,255,0.15)]"
         >
-          Get started free
+          Get started free →
         </a>
       </section>
 
-      <footer className="border-t border-white/10 py-8 text-center text-white/40 text-sm">
+      <footer className="relative border-t border-white/10 py-8 text-center text-white/40 text-sm">
         © {new Date().getFullYear()} Northwind — Demo preview
       </footer>
     </div>
