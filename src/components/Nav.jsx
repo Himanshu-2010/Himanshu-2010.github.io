@@ -21,8 +21,13 @@ const NAV_LINKS = [
 
 export default function Nav() {
   const [active, setActive] = useState('');
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const onServices = location.pathname === '/services';
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
 
   useEffect(() => {
     const ids = NAV_LINKS.map((l) => l.id);
@@ -48,12 +53,12 @@ export default function Nav() {
   };
 
   return (
-    <nav className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50">
-      <div className="liquid-glass flex items-center gap-3 sm:gap-6 rounded px-3 sm:px-4 py-2 max-w-[94vw]">
+    <nav className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-max max-w-[94vw]">
+      <div className="liquid-glass flex items-center gap-3 sm:gap-6 rounded px-3 sm:px-4 py-2">
         <Link to="/" onClick={logoClick} aria-label="Home">
           <LogoMark />
         </Link>
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="hidden md:flex items-center gap-3 sm:gap-5">
           <Link
             to="/services"
             className={`text-xs sm:text-sm font-body font-light transition-colors duration-200 ${
@@ -84,7 +89,54 @@ export default function Nav() {
         >
           Try it free
         </Link>
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden flex flex-col justify-center gap-[5px] w-7 h-7 items-center"
+        >
+          <span
+            className={`block h-[2px] w-5 bg-white transition-transform duration-200 ${
+              open ? 'translate-y-[7px] rotate-45' : ''
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-5 bg-white transition-opacity duration-200 ${
+              open ? 'opacity-0' : ''
+            }`}
+          />
+          <span
+            className={`block h-[2px] w-5 bg-white transition-transform duration-200 ${
+              open ? '-translate-y-[7px] -rotate-45' : ''
+            }`}
+          />
+        </button>
       </div>
+
+      {open && (
+        <div className="md:hidden liquid-glass mt-2 rounded flex flex-col gap-1 px-4 py-3">
+          <Link
+            to="/services"
+            className={`text-sm font-body py-1.5 transition-colors duration-200 ${
+              onServices ? 'text-white' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            Services
+          </Link>
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.id}
+              to={`/#${l.id}`}
+              className={`text-sm font-body py-1.5 transition-colors duration-200 ${
+                active === l.id ? 'text-white' : 'text-white/70 hover:text-white'
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

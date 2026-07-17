@@ -1,20 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Home from './components/Home.jsx';
-import ChatPage from './components/ChatPage.jsx';
-import ServicesPage from './components/ServicesPage.jsx';
-import PreviewPage from './components/preview/PreviewPage.jsx';
 import Nav from './components/Nav.jsx';
 import TerminalOverlay from './components/TerminalOverlay.jsx';
+
+const Home = lazy(() => import('./components/Home.jsx'));
+const ChatPage = lazy(() => import('./components/ChatPage.jsx'));
+const ServicesPage = lazy(() => import('./components/ServicesPage.jsx'));
+const PreviewPage = lazy(() => import('./components/preview/PreviewPage.jsx'));
+
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const isCoarsePointer =
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(pointer: coarse)').matches;
 
 // ─── STARFIELD (mouse-reactive particles) ─────────────────────────────────────
 function Starfield() {
   const canvasRef = useRef();
   const mouse = useRef({ x: -9999, y: -9999 });
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let raf;
+    let paused = false;
     const stars = [];
     const R = 150;
     const resize = () => {
@@ -23,7 +36,8 @@ function Starfield() {
     };
     resize();
     window.addEventListener('resize', resize);
-    for (let i = 0; i < 200; i++) {
+    const count = window.innerWidth < 768 ? 70 : 200;
+    for (let i = 0; i < count; i++) {
       stars.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -43,12 +57,23 @@ function Starfield() {
       mouse.current.x = -9999;
       mouse.current.y = -9999;
     };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseout', (e) => {
+    const onMouseOut = (e) => {
       if (!e.relatedTarget) onLeave();
-    });
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseout', onMouseOut);
+
+    const onVisibility = () => {
+      paused = document.hidden;
+      if (!paused) {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(draw);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
     const draw = () => {
+      if (paused) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const mx = mouse.current.x;
       const my = mouse.current.y;
@@ -83,7 +108,8 @@ function Starfield() {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseout', onLeave);
+      window.removeEventListener('mouseout', onMouseOut);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
   return (
@@ -107,6 +133,7 @@ function Cursor() {
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
   }, []);
+  if (isCoarsePointer) return null;
   return (
     <>
       <div className="cursor" ref={cursorRef} />
@@ -161,12 +188,14 @@ export default function App() {
       <div className="noise-overlay" />
       <Nav />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/preview/:id" element={<PreviewPage />} />
-        <Route path="/chat" element={<ChatPage />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/preview/:id" element={<PreviewPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+        </Routes>
+      </Suspense>
 
       <TerminalOverlay />
     </>

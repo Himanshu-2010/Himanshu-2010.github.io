@@ -6,7 +6,7 @@ export default {
       fontFamily: {
         heading: ['Instrument Serif', 'serif'],
         body: ['Barlow', 'sans-serif'],
-        dirtyline: ['Dirtyline', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: { DEFAULT: '9999px' },
     },

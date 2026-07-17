@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import * as THREE from 'three';
 
 const vertexShader = /* glsl */ `
@@ -90,8 +90,28 @@ function ShaderPlane() {
 }
 
 export default function HeroBackground() {
+  const wrapRef = useRef();
+  const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    obs.observe(el);
+    const onVis = () => setActive(!document.hidden);
+    document.addEventListener('visibilitychange', onVis);
+    return () => {
+      obs.disconnect();
+      document.removeEventListener('visibilitychange', onVis);
+    };
+  }, []);
+
   return (
     <div
+      ref={wrapRef}
       className="absolute inset-0 z-0"
       style={{ background: 'var(--bg)' }}
       aria-hidden="true"
@@ -99,7 +119,8 @@ export default function HeroBackground() {
       <Canvas
         className="!absolute inset-0"
         gl={{ antialias: false, powerPreference: 'high-performance' }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
+        frameloop={active ? 'always' : 'never'}
       >
         <ShaderPlane />
       </Canvas>

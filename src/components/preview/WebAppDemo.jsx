@@ -101,7 +101,8 @@ export default function WebAppDemo() {
             <span className="text-sm text-white/70">Recent activity</span>
             <span className="text-xs text-white/40">View all →</span>
           </div>
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[560px]">
             <thead>
               <tr className="text-white/40 text-left">
                 <th className="px-5 py-3 font-normal">Order</th>
@@ -130,6 +131,7 @@ export default function WebAppDemo() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>
