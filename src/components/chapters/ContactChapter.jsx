@@ -60,10 +60,6 @@ export default function ContactChapter() {
           </span>
         </div>
       </div>
-
-      <footer className="relative z-10 mt-24 text-center font-mono text-xs text-white/40 border-t border-white/10 pt-8">
-        Built by {DATA.name} · Class 10 · India · {new Date().getFullYear()}
-      </footer>
     </section>
   );
 }
