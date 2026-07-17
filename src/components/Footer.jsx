@@ -31,6 +31,11 @@ export default function Footer() {
               Chapters
             </div>
             <ul className="space-y-2 font-body text-white/70">
+              <li>
+                <Link to="/services" className="hover:text-white transition-colors">
+                  Services
+                </Link>
+              </li>
               {CHAPTERS.map((c) => (
                 <li key={c.id}>
                   <Link to={`/#${c.id}`} className="hover:text-white transition-colors">

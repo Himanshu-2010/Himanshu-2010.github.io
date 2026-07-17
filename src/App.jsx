@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import ChatPage from './components/ChatPage.jsx';
+import ServicesPage from './components/ServicesPage.jsx';
 import Nav from './components/Nav.jsx';
 import TerminalOverlay from './components/TerminalOverlay.jsx';
 
@@ -161,6 +162,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/chat" element={<ChatPage />} />
       </Routes>
 

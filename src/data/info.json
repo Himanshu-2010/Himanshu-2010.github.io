@@ -635,5 +635,119 @@
     "endpoint": "https://mors369-hermes-model.hf.space",
     "label": "Orion AI",
     "model": "orion"
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "Services",
+      "title": "We Build What You Imagine",
+      "subtitle": "Custom websites and made-to-order robotics — designed, built, and shipped by a hands-on engineer. Preview websites free; order hardware built to your spec."
+    },
+    "websites": [
+      {
+        "id": "portfolio",
+        "title": "Portfolio Site",
+        "desc": "A fast, animated single-page portfolio to show off your work — like this one.",
+        "price": "₹4,999",
+        "preview": "#",
+        "tags": ["React", "Vite", "GSAP"]
+      },
+      {
+        "id": "landing",
+        "title": "Startup Landing",
+        "desc": "A conversion-focused marketing landing page with hero, features, and waitlist.",
+        "price": "₹7,999",
+        "preview": "#",
+        "tags": ["Landing", "Tailwind", "SEO"]
+      },
+      {
+        "id": "webapp",
+        "title": "Web App Starter",
+        "desc": "A full-stack starter: React frontend wired to a small API, ready to extend.",
+        "price": "₹14,999",
+        "preview": "#",
+        "tags": ["React", "API", "Auth"]
+      },
+      {
+        "id": "blog",
+        "title": "Blog / CMS",
+        "desc": "A clean blog or lightweight CMS with markdown posts and a content panel.",
+        "price": "₹9,999",
+        "preview": "#",
+        "tags": ["CMS", "Markdown", "RSS"]
+      }
+    ],
+    "electronics": [
+      {
+        "id": "rc-battle-bot",
+        "title": "RC Battle Bot",
+        "desc": "A 2.4GHz remote-controlled combat robot with reinforced chassis and weapon mount.",
+        "category": "robotics",
+        "price": "₹6,500",
+        "video": "",
+        "images": [],
+        "tags": ["ESP32", "RF", "3D-printed"]
+      },
+      {
+        "id": "pid-line-follower",
+        "title": "PID Line Follower",
+        "desc": "Autonomous high-speed line follower with 8-channel IR array and tuned PID loop.",
+        "category": "robotics",
+        "price": "₹4,500",
+        "video": "",
+        "images": [],
+        "tags": ["PID", "IR Array", "C++"]
+      },
+      {
+        "id": "smart-farm",
+        "title": "Smart Farm Monitor",
+        "desc": "IoT soil + climate monitor with live dashboard and mobile alerts.",
+        "category": "iot",
+        "price": "₹8,000",
+        "video": "",
+        "images": [],
+        "tags": ["IoT", "Sensors", "Dashboard"]
+      },
+      {
+        "id": "gesture-rc",
+        "title": "Gesture RC Car",
+        "desc": "An accelerometer glove drives an RC car — no joystick required.",
+        "category": "electronics",
+        "price": "₹5,500",
+        "video": "",
+        "images": [],
+        "tags": ["MPU6050", "RF", "Arduino"]
+      }
+    ],
+    "process": [
+      {
+        "step": "01",
+        "title": "Discovery",
+        "desc": "We talk through what you need — goals, scope, and constraints."
+      },
+      {
+        "step": "02",
+        "title": "Architecture & Design",
+        "desc": "I sketch the build: tech stack, circuit, or page structure, and a timeline."
+      },
+      {
+        "step": "03",
+        "title": "Build",
+        "desc": "Hands-on implementation — code, firmware, or soldered hardware."
+      },
+      {
+        "step": "04",
+        "title": "Test & Iterate",
+        "desc": "Real-world testing, debugging, and refinements until it's solid."
+      },
+      {
+        "step": "05",
+        "title": "Handoff & Deploy",
+        "desc": "You get the finished product, source/docs, and a quick walkthrough."
+      }
+    ],
+    "ordering": {
+      "websiteNote": "Every website has a free live preview. Pay once for the full source and deployment.",
+      "electronicNote": "Pay 25% in advance to start the build. If you send your own components for assembly, no advance is needed — you pay the total at the end."
+    }
   }
 }

@@ -22,6 +22,7 @@ const NAV_LINKS = [
 export default function Nav() {
   const [active, setActive] = useState('');
   const location = useLocation();
+  const onServices = location.pathname === '/services';
 
   useEffect(() => {
     const ids = NAV_LINKS.map((l) => l.id);
@@ -53,6 +54,16 @@ export default function Nav() {
           <LogoMark />
         </Link>
         <div className="flex items-center gap-3 sm:gap-5">
+          <Link
+            to="/services"
+            className={`text-xs sm:text-sm font-body font-light transition-colors duration-200 ${
+              onServices
+                ? 'text-white underline decoration-[var(--accent)] decoration-2 underline-offset-4'
+                : 'text-white/70 hover:text-white'
+            }`}
+          >
+            Services
+          </Link>
           {NAV_LINKS.map((l) => (
             <Link
               key={l.id}
