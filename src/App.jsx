@@ -5,14 +5,16 @@ import ChatPage from './components/ChatPage.jsx';
 import Nav from './components/Nav.jsx';
 import TerminalOverlay from './components/TerminalOverlay.jsx';
 
-// ─── STARFIELD ────────────────────────────────────────────────────────────────
+// ─── STARFIELD (mouse-reactive particles) ─────────────────────────────────────
 function Starfield() {
   const canvasRef = useRef();
+  const mouse = useRef({ x: -9999, y: -9999 });
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let raf;
     const stars = [];
+    const R = 150;
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -23,23 +25,54 @@ function Starfield() {
       stars.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        r: Math.random() * 1.2 + 0.2,
-        speed: Math.random() * 0.3 + 0.05,
-        opacity: Math.random() * 0.6 + 0.1,
+        vx: 0,
+        vy: 0,
+        r: Math.random() * 1.4 + 0.3,
+        drift: Math.random() * 0.25 + 0.05,
+        opacity: Math.random() * 0.6 + 0.2,
       });
     }
+
+    const onMove = (e) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+    const onLeave = () => {
+      mouse.current.x = -9999;
+      mouse.current.y = -9999;
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget) onLeave();
+    });
+
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const mx = mouse.current.x;
+      const my = mouse.current.y;
       stars.forEach((s) => {
+        const dx = s.x - mx;
+        const dy = s.y - my;
+        const dist = Math.hypot(dx, dy);
+        if (dist < R && dist > 0.01) {
+          const force = ((R - dist) / R) * 1.6;
+          s.vx += (dx / dist) * force;
+          s.vy += (dy / dist) * force;
+        }
+        s.vx *= 0.92;
+        s.vy *= 0.92;
+        s.x += s.vx;
+        s.y += s.vy + s.drift;
+
+        if (s.x < 0) s.x += canvas.width;
+        if (s.x > canvas.width) s.x -= canvas.width;
+        if (s.y < 0) s.y += canvas.height;
+        if (s.y > canvas.height) s.y -= canvas.height;
+
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(160,200,255,${s.opacity})`;
         ctx.fill();
-        s.y += s.speed;
-        if (s.y > canvas.height) {
-          s.y = 0;
-          s.x = Math.random() * canvas.width;
-        }
       });
       raf = requestAnimationFrame(draw);
     };
@@ -47,6 +80,8 @@ function Starfield() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseout', onLeave);
     };
   }, []);
   return (
