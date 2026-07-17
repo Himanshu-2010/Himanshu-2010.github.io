@@ -1,15 +1,14 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../lib/motion';
+import {
+  orderWebsiteMailto,
+  orderElectronicsMailto,
+  enquiryMailto,
+} from '../lib/enquiry';
 import DATA from '../data/info.json';
 
-const EMAIL = DATA.contact.email;
 const SERVICES = DATA.services;
-
-function mailto(subject, body) {
-  window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-}
 
 function MediaSlot({ video, images, label }) {
   const src = images && images[0];
@@ -59,32 +58,14 @@ export default function ServicesPage() {
 
   const submitEnquiry = (e) => {
     e.preventDefault();
-    const subject = `Project enquiry (${form.type}) — ${form.name || 'anonymous'}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Type: ${form.type}`,
-      `Budget: ${form.budget || 'not specified'}`,
-      '',
-      form.message,
-    ].join('\n');
-    mailto(subject, body);
+    enquiryMailto(form);
     setSent(true);
   };
 
-  const orderWebsite = (w) => {
-    mailto(
-      `Website order: ${w.title}`,
-      `Hi Himanshu,\n\nI'd like to order the "${w.title}" website (${w.price}).\n\nMy details:\n- Name:\n- Email:\n- Notes:\n`
-    );
-  };
+  const orderWebsite = (w) => orderWebsiteMailto(w);
 
-  const orderElectronics = (p) => {
-    mailto(
-      `Electronics order: ${p.title}`,
-      `Hi Himanshu,\n\nI'd like to order the "${p.title}" (${p.price}).\n${SERVICES.ordering.electronicNote}\n\nMy details:\n- Name:\n- Email:\n- Shipping address:\n- Sending my own components? (yes/no):\n`
-    );
-  };
+  const orderElectronics = (p) =>
+    orderElectronicsMailto(p, SERVICES.ordering.electronicNote);
 
   const requestBuild = () => {
     setForm((f) => ({ ...f, type: 'electronics' }));
@@ -163,14 +144,12 @@ export default function ServicesPage() {
                 </div>
                 <div className="font-body text-white text-lg mb-4">{w.price}</div>
                 <div className="flex gap-2">
-                  <a
-                    href={w.preview}
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
+                    to={w.preview}
                     className="flex-1 text-center liquid-glass-strong rounded px-3 py-2 text-sm font-body text-white hover:scale-105 transition"
                   >
                     Free preview
-                  </a>
+                  </Link>
                   <button
                     onClick={() => orderWebsite(w)}
                     className="flex-1 text-center bg-white text-black rounded px-3 py-2 text-sm font-body font-medium hover:scale-105 transition active:scale-95"

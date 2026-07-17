@@ -648,7 +648,7 @@
         "title": "Portfolio Site",
         "desc": "A fast, animated single-page portfolio to show off your work — like this one.",
         "price": "₹4,999",
-        "preview": "#",
+        "preview": "/preview/portfolio",
         "tags": ["React", "Vite", "GSAP"]
       },
       {
@@ -656,7 +656,7 @@
         "title": "Startup Landing",
         "desc": "A conversion-focused marketing landing page with hero, features, and waitlist.",
         "price": "₹7,999",
-        "preview": "#",
+        "preview": "/preview/landing",
         "tags": ["Landing", "Tailwind", "SEO"]
       },
       {
@@ -664,7 +664,7 @@
         "title": "Web App Starter",
         "desc": "A full-stack starter: React frontend wired to a small API, ready to extend.",
         "price": "₹14,999",
-        "preview": "#",
+        "preview": "/preview/webapp",
         "tags": ["React", "API", "Auth"]
       },
       {
@@ -672,7 +672,7 @@
         "title": "Blog / CMS",
         "desc": "A clean blog or lightweight CMS with markdown posts and a content panel.",
         "price": "₹9,999",
-        "preview": "#",
+        "preview": "/preview/blog",
         "tags": ["CMS", "Markdown", "RSS"]
       }
     ],

@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import ChatPage from './components/ChatPage.jsx';
 import ServicesPage from './components/ServicesPage.jsx';
+import PreviewPage from './components/preview/PreviewPage.jsx';
 import Nav from './components/Nav.jsx';
 import TerminalOverlay from './components/TerminalOverlay.jsx';
 
@@ -163,6 +164,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/preview/:id" element={<PreviewPage />} />
         <Route path="/chat" element={<ChatPage />} />
       </Routes>
 
