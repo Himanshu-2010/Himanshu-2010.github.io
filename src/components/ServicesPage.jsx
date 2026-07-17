@@ -225,6 +225,23 @@ export default function ServicesPage() {
                     </span>
                   ))}
                 </div>
+                {p.components && p.components.length > 0 && (
+                  <div className="mb-4">
+                    <div className="font-body text-[0.7rem] uppercase tracking-widest text-white/40 mb-1">
+                      Components
+                    </div>
+                    <ul className="font-mono text-xs text-white/55 space-y-0.5">
+                      {p.components.map((c, i) => (
+                        <li key={i} className="flex justify-between gap-3">
+                          <span>{c.name}</span>
+                          <span className="text-white/40">
+                            {c.qty > 0 ? `×${c.qty}` : 'as needed'}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div className="flex items-center justify-between gap-3">
                   <div className="font-body text-white text-lg">{p.price}</div>
                   <button

@@ -685,7 +685,15 @@
         "price": "₹6,500",
         "video": "",
         "images": [],
-        "tags": ["ESP32", "RF", "3D-printed"]
+        "tags": ["ESP32", "RF", "3D-printed"],
+        "components": [
+          { "name": "ESP32 dev board", "qty": 1 },
+          { "name": "N20 gear motors", "qty": 4 },
+          { "name": "L298N motor driver", "qty": 2 },
+          { "name": "NRF24L01 radio module", "qty": 1 },
+          { "name": "2S Li-Ion battery pack", "qty": 1 },
+          { "name": "3D-printed chassis", "qty": 1 }
+        ]
       },
       {
         "id": "n20-f1-car",
@@ -695,7 +703,15 @@
         "price": "₹3,800",
         "video": "",
         "images": [],
-        "tags": ["N20", "Gear Motor", "3D-printed"]
+        "tags": ["N20", "Gear Motor", "3D-printed"],
+        "components": [
+          { "name": "N20 gear motors", "qty": 2 },
+          { "name": "Arduino Nano", "qty": 1 },
+          { "name": "NRF24L01 radio module", "qty": 1 },
+          { "name": "Li-Po cell (3.7V)", "qty": 1 },
+          { "name": "3D-printed F1 chassis", "qty": 1 },
+          { "name": "Rubber wheels", "qty": 4 }
+        ]
       },
       {
         "id": "smart-farm",
@@ -705,7 +721,15 @@
         "price": "₹8,000",
         "video": "",
         "images": [],
-        "tags": ["IoT", "Sensors", "Dashboard"]
+        "tags": ["IoT", "Sensors", "Dashboard"],
+        "components": [
+          { "name": "ESP32 dev board", "qty": 1 },
+          { "name": "Soil moisture sensor", "qty": 2 },
+          { "name": "DHT22 temp/humidity", "qty": 1 },
+          { "name": "Relay module", "qty": 1 },
+          { "name": "Solar + Li-Ion pack", "qty": 1 },
+          { "name": "NRF24L01 radio module", "qty": 1 }
+        ]
       },
       {
         "id": "gesture-rc",
@@ -715,7 +739,14 @@
         "price": "₹5,500",
         "video": "",
         "images": [],
-        "tags": ["MPU6050", "RF", "Arduino"]
+        "tags": ["MPU6050", "RF", "Arduino"],
+        "components": [
+          { "name": "Arduino Nano", "qty": 1 },
+          { "name": "MPU6050 accelerometer", "qty": 1 },
+          { "name": "NRF24L01 radio module", "qty": 1 },
+          { "name": "N20 gear motors", "qty": 2 },
+          { "name": "Li-Po cell (3.7V)", "qty": 1 }
+        ]
       },
       {
         "id": "nrf24-remote",
@@ -725,7 +756,32 @@
         "price": "₹2,200",
         "video": "",
         "images": [],
-        "tags": ["NRF24", "Arduino", "RC"]
+        "tags": ["NRF24", "Arduino", "RC"],
+        "components": [
+          { "name": "Arduino Nano", "qty": 1 },
+          { "name": "NRF24L01 radio module", "qty": 1 },
+          { "name": "Dual-axis joystick", "qty": 1 },
+          { "name": "Tactile buttons", "qty": 4 },
+          { "name": "Li-Po cell (3.7V)", "qty": 1 },
+          { "name": "3D-printed enclosure", "qty": 1 }
+        ]
+      },
+      {
+        "id": "custom-battery",
+        "title": "Custom Battery Pack",
+        "desc": "Made-to-order Li-Ion / Li-Po packs with BMS and your choice of connector — built to your voltage and capacity.",
+        "category": "electronics",
+        "price": "₹1,500",
+        "video": "",
+        "images": [],
+        "tags": ["Li-Ion", "BMS", "Custom"],
+        "components": [
+          { "name": "18650 Li-Ion cells", "qty": 0 },
+          { "name": "BMS protection board", "qty": 1 },
+          { "name": "Connector (JST/XT60)", "qty": 1 },
+          { "name": "Silicone wire", "qty": 1 },
+          { "name": "Heat-shrink enclosure", "qty": 1 }
+        ]
       }
     ],
     "process": [
