@@ -125,23 +125,6 @@ function DetailPanel({ project, onClose }) {
               </>
             )}
 
-            {project.failureLogs?.length > 0 && (
-              <>
-                <div className="font-body text-xs tracking-widest uppercase text-[var(--accent)] mb-2">
-                  Debug Log
-                </div>
-                <div className="space-y-3 mb-6">
-                  {project.failureLogs.map((f, i) => (
-                    <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                      <div className="font-body text-sm text-[var(--accent3)]">⚠ {f.issue}</div>
-                      <div className="font-body text-xs text-white/50 mt-1">Root: {f.cause}</div>
-                      <div className="font-body text-xs text-[var(--accent4)] mt-1">✓ {f.resolution}</div>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-
             {project.links && (
               <div className="flex gap-3">
                 {project.links.github && (
