@@ -688,14 +688,14 @@
         "tags": ["ESP32", "RF", "3D-printed"]
       },
       {
-        "id": "pid-line-follower",
-        "title": "PID Line Follower",
-        "desc": "Autonomous high-speed line follower with 8-channel IR array and tuned PID loop.",
+        "id": "n20-f1-car",
+        "title": "N20 F1 Car",
+        "desc": "A tiny F1-style racer built on N20 micro gear-motors — lightweight, fast, and ready for the track.",
         "category": "robotics",
-        "price": "₹4,500",
+        "price": "₹3,800",
         "video": "",
         "images": [],
-        "tags": ["PID", "IR Array", "C++"]
+        "tags": ["N20", "Gear Motor", "3D-printed"]
       },
       {
         "id": "smart-farm",
@@ -716,6 +716,16 @@
         "video": "",
         "images": [],
         "tags": ["MPU6050", "RF", "Arduino"]
+      },
+      {
+        "id": "nrf24-remote",
+        "title": "NRF24 Custom Remote",
+        "desc": "A custom-built 2.4GHz NRF24 remote that controls every car and bot sold on this site — one controller for all.",
+        "category": "electronics",
+        "price": "₹2,200",
+        "video": "",
+        "images": [],
+        "tags": ["NRF24", "Arduino", "RC"]
       }
     ],
     "process": [
