@@ -1,0 +1,639 @@
+{
+  "name": "Himanshu Kumar",
+  "tagline": "Student Engineer & Electronics Maker",
+  "subtitle": "Building autonomous robots, low-level firmware, and web apps — from the ground up. Class 10, India.",
+  "bio": [
+    "I'm a 10th-grade student from India with a deep passion for electronics, robotics, and embedded systems.",
+    "From RC battle bots to smart farm automation and student apps — I love bringing ideas to life through hands-on building."
+  ],
+  "school": "Dayanand Public School",
+  "os": "Arch Linux",
+  "editor": "VS Code + PlatformIO",
+  "philosophy": "Engineering is learned by building.\nEvery failed prototype is a debugging session.\nEvery successful build is proof of concept.",
+  "stats": [
+    {
+      "value": "12+",
+      "label": "Hardware Prototypes"
+    },
+    {
+      "value": "42K+",
+      "label": "Lines of C++ / Python"
+    },
+    {
+      "value": "5",
+      "label": "MCU Platforms"
+    },
+    {
+      "value": "115200",
+      "label": "bps Stable Pipeline"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Arduino / Embedded C++",
+      "level": 90
+    },
+    {
+      "label": "IoT & Sensors",
+      "level": 85
+    },
+    {
+      "label": "Robotics / PID Control",
+      "level": 88
+    },
+    {
+      "label": "HTML / CSS / JS",
+      "level": 80
+    },
+    {
+      "label": "Python",
+      "level": 60
+    },
+    {
+      "label": "JAVA",
+      "level": 70
+    }
+  ],
+  "skillCats": [
+    {
+      "icon": "📟",
+      "name": "Embedded Systems",
+      "items": [
+        "MCUs: Arduino · ESP8266 · ESP32 · Pi Pico",
+        "Protocols: I2C · SPI · UART · RF 2.4GHz",
+      "Drivers: L298N · H-Bridge · ESC"
+      ]
+    },
+    {
+      "icon": "🤖",
+      "name": "Robotics",
+      "items": [
+        "PID closed-loop control",
+        "IR array line following",
+        "RF remote control (FlySky i6)"
+      ]
+    },
+    {
+      "icon": "💻",
+      "name": "Software",
+      "items": [
+        "Embedded C++ · Python 3 · Bash",
+        "Web: HTML · CSS · JS · React",
+        "Linux Admin · Git · PlatformIO"
+      ]
+    },
+    {
+      "icon": "🔌",
+      "name": "Electronics",
+      "items": [
+        "Breadboarding · Soldering · Schematics",
+        "Li-Ion packs · BMS · Solar power",
+        "Multimeter diagnostics"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "tarzan-bot",
+      "title": "Tarzan Bot — PID Line Follower",
+      "category": "robotics",
+      "icon": "🤖",
+      "status": "complete",
+      "summary": "ESP8266-driven autonomous line follower with 8-channel IR array and PID closed-loop control. Tuned for stable high-speed tracking.",
+      "tags": [
+        "ESP8266",
+        "PID",
+        "C++",
+        "L298N",
+        "IR Array"
+      ],
+      "systemParams": [
+        {
+          "field": "Problem",
+          "value": "Build a robot that autonomously follows a black line at high speed"
+        },
+        {
+          "field": "Solution",
+          "value": "ESP8266 + 8-channel IR array + PID closed-loop driving L298N"
+        },
+        {
+          "field": "PID Params",
+          "value": "Kp = 3.14 · Ki = 0.02 · Kd = 1.1"
+        },
+        {
+          "field": "Control Mode",
+          "value": "Fully autonomous — no remote input during operation"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Microcontroller",
+          "spec": "NodeMCU ESP8266",
+          "qty": 1
+        },
+        {
+          "component": "IR Sensor Array",
+          "spec": "8-channel TCRT5000",
+          "qty": 1
+        },
+        {
+          "component": "Motor Driver",
+          "spec": "L298N Dual H-Bridge",
+          "qty": 1
+        },
+        {
+          "component": "DC Motors",
+          "spec": "High-RPM gear motors",
+          "qty": 2
+        },
+        {
+          "component": "Battery",
+          "spec": "2S Li-Ion ~7.4V",
+          "qty": 1
+        }
+      ],
+      "failureLogs": [
+        {
+          "issue": "IR readings flicker under fluorescent light",
+          "cause": "Ambient IR interference",
+          "resolution": "3D-printed sensor shroud to block ambient IR"
+        },
+        {
+          "issue": "Robot oscillates at high speed",
+          "cause": "Kd too low — insufficient damping",
+          "resolution": "Increased Kd, reduced base speed threshold"
+        },
+        {
+          "issue": "Motor driver overheats",
+          "cause": "L298N at continuous max current",
+          "resolution": "Added heatsink; current-limiting PWM ceiling"
+        }
+      ],
+      "code": {
+        "lang": "cpp",
+        "snippet": "int weightedError() {\n  int weightedSum = 0, count = 0;\n  int weights[] = {-4,-3,-2,-1,1,2,3,4};\n  for (int i = 0; i < 8; i++) {\n    if (sensorValues[i]) {\n      weightedSum += weights[i];\n      count++;\n    }\n  }\n  return count > 0 ? weightedSum / count : lastError;\n}"
+      }
+    },
+    {
+      "id": "battle-bot",
+      "title": "Battle Bot — RC Combat Robot",
+      "category": "robotics",
+      "icon": "⚔️",
+      "status": "complete",
+      "summary": "Durable radio-controlled combat platform with FlySky RF control, high-torque drive motors, and isolated weapon ESC system.",
+      "tags": [
+        "FlySky",
+        "RC",
+        "L298N",
+        "ESC",
+        "LiPo"
+      ],
+      "systemParams": [
+        {
+          "field": "Problem",
+          "value": "Build a durable RC combat platform for sustained mechanical engagement"
+        },
+        {
+          "field": "Solution",
+          "value": "FlySky RF control with high-torque motors + isolated weapon ESC"
+        },
+        {
+          "field": "Control Range",
+          "value": "~200m open field with FlySky i6"
+        },
+        {
+          "field": "Weight Class",
+          "value": "Competition entry class"
+        }
+      ],
+      "bom": [
+        {
+          "component": "RF Transmitter",
+          "spec": "FlySky i6 6-Ch 2.4GHz",
+          "qty": 1
+        },
+        {
+          "component": "RF Receiver",
+          "spec": "FlySky FS-iA6B",
+          "qty": 1
+        },
+        {
+          "component": "Drive Motors",
+          "spec": "High-torque metal gear DC",
+          "qty": 2
+        },
+        {
+          "component": "Weapon Motor",
+          "spec": "High-RPM brushless",
+          "qty": 1
+        },
+        {
+          "component": "Battery",
+          "spec": "LiPo high-discharge pack",
+          "qty": 1
+        },
+        {
+          "component": "Chassis",
+          "spec": "Modular aluminum/HDPE frame",
+          "qty": 1
+        }
+      ],
+      "failureLogs": [
+        {
+          "issue": "MCU resets during weapon activation",
+          "cause": "Weapon motor inrush collapsed logic rail",
+          "resolution": "Isolated dual power rails — weapon on dedicated cell"
+        },
+        {
+          "issue": "Drive motors lose sync",
+          "cause": "PWM noise from weapon ESC coupling",
+          "resolution": "Ferrite beads on PWM lines; physical separation"
+        }
+      ]
+    },
+    {
+      "id": "indinotes",
+      "title": "IndiNotes — Student Notebook",
+      "category": "software",
+      "icon": "📝",
+      "status": "open-source",
+      "summary": "A local-first student notebook with vector canvas drawing, interactive graphing calculator, chapter organization, voice notes, and more.",
+      "tags": [
+        "React",
+        "Konva",
+        "PWA",
+        "Electron",
+        "Capacitor",
+        "Zustand"
+      ],
+      "systemParams": [
+        {
+          "field": "Goal",
+          "value": "Free, open-source, cross-platform student notebook — offline first"
+        },
+        {
+          "field": "Platforms",
+          "value": "Browser (PWA) · Desktop (Electron) · Android (Capacitor)"
+        },
+        {
+          "field": "Storage",
+          "value": "100% local — IndexedDB via Dexie.js. Optional Supabase sync"
+        },
+        {
+          "field": "License",
+          "value": "MIT — free for everyone"
+        }
+      ],
+      "bom": [],
+      "failureLogs": [],
+      "links": {
+        "github": "https://github.com/himanshu-2010/indinotes",
+        "app": "https://indinotes.vercel.app"
+      },
+      "features": [
+        "Vector canvas with pen, eraser, text, shapes, highlighter",
+        "Interactive graphing calculator with mathjs",
+        "Chapter organization with folders, tags, priority colors",
+        "Voice notes recording & playback",
+        "Pomodoro timer with desktop notifications",
+        "PNG/PDF/SVG export + bulk backup/restore",
+        "Electron desktop app with auto-updater",
+        "Android app via Capacitor"
+      ]
+    },
+    {
+      "id": "smart-farm",
+      "title": "Smart Farm Automation",
+      "category": "electronics",
+      "icon": "🌱",
+      "status": "complete",
+      "summary": "IoT-enabled farm monitoring with temp, humidity, soil moisture sensors and remote web access via ESP8266 WiFi. Solar-powered off-grid.",
+      "tags": [
+        "Arduino",
+        "IoT",
+        "ESP8266",
+        "MQTT",
+        "Solar"
+      ],
+      "systemParams": [
+        {
+          "field": "Goal",
+          "value": "Monitor soil moisture, temperature, humidity — remote control via dashboard"
+        },
+        {
+          "field": "Sensors",
+          "value": "Soil moisture (capacitive), DHT22 (temp/humidity)"
+        },
+        {
+          "field": "Connectivity",
+          "value": "ESP8266 WiFi — MQTT / HTTP to web dashboard"
+        },
+        {
+          "field": "Power",
+          "value": "Solar-charged battery pack for off-grid deployment"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Microcontroller",
+          "spec": "Arduino Nano + ESP8266",
+          "qty": 1
+        },
+        {
+          "component": "Soil Moisture Sensor",
+          "spec": "Capacitive v1.2",
+          "qty": 3
+        },
+        {
+          "component": "Temp/Humidity",
+          "spec": "DHT22",
+          "qty": 1
+        },
+        {
+          "component": "Relay Module",
+          "spec": "4-channel 5V",
+          "qty": 1
+        },
+        {
+          "component": "Solar Panel",
+          "spec": "10W 12V",
+          "qty": 1
+        },
+        {
+          "component": "Battery",
+          "spec": "12V 7Ah Li-Ion",
+          "qty": 1
+        }
+      ],
+      "failureLogs": [
+        {
+          "issue": "Sensor drift after 48 hours",
+          "cause": "Capacitive sensor corroded in moisture",
+          "resolution": "Switched to enamel-coated probes + periodic calibration"
+        },
+        {
+          "issue": "WiFi disconnects under load",
+          "cause": "ESP8266 voltage drop when relay engages",
+          "resolution": "Isolated relay rail with dedicated 5V regulator"
+        }
+      ]
+    },
+    {
+      "id": "mp3-player",
+      "title": "ESP8266 MP3 Player",
+      "category": "embedded",
+      "icon": "🎵",
+      "status": "complete",
+      "summary": "Pocket-sized standalone audio player with SSD1306 OLED, DFPlayer Mini, tactile controls, and Li-Ion power. No phone needed.",
+      "tags": [
+        "ESP8266",
+        "DFPlayer",
+        "OLED",
+        "I2C",
+        "UART"
+      ],
+      "systemParams": [
+        {
+          "field": "Goal",
+          "value": "Pocket-sized standalone audio player — no smartphone required"
+        },
+        {
+          "field": "MCU",
+          "value": "NodeMCU ESP8266"
+        },
+        {
+          "field": "Storage",
+          "value": "MicroSD via DFPlayer Mini"
+        },
+        {
+          "field": "Interface",
+          "value": "SSD1306 OLED + tactile button cluster"
+        },
+        {
+          "field": "Power",
+          "value": "Li-Ion cell with charging circuit"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Microcontroller",
+          "spec": "NodeMCU ESP8266",
+          "qty": 1
+        },
+        {
+          "component": "Audio Module",
+          "spec": "DFPlayer Mini",
+          "qty": 1
+        },
+        {
+          "component": "Display",
+          "spec": "SSD1306 0.96\" OLED",
+          "qty": 1
+        },
+        {
+          "component": "Battery",
+          "spec": "3.7V Li-Ion + TP4056",
+          "qty": 1
+        }
+      ],
+      "failureLogs": [
+        {
+          "issue": "DFPlayer unresponsive on boot",
+          "cause": "UART baud mismatch (DFPlayer: 9600)",
+          "resolution": "Explicitly set SoftwareSerial to 9600 baud"
+        },
+        {
+          "issue": "OLED freezes after track change",
+          "cause": "I2C bus locked during simultaneous UART+I2C",
+          "resolution": "Added Wire.begin() recovery + non-blocking state machine"
+        }
+      ]
+    },
+    {
+      "id": "solar-purifier",
+      "title": "Solar Water Purifier",
+      "category": "electronics",
+      "icon": "💧",
+      "status": "prototype",
+      "summary": "Solar-charged battery system powering multi-stage filtration with UV sterilization and low-voltage cutoff. Off-grid water solution.",
+      "tags": [
+        "Solar",
+        "12V",
+        "UV-C",
+        "BMS",
+        "Off-Grid"
+      ],
+      "systemParams": [
+        {
+          "field": "Problem",
+          "value": "Clean drinking water for off-grid communities without mains power"
+        },
+        {
+          "field": "Solution",
+          "value": "Solar battery + multi-stage filtration + UV sterilization"
+        },
+        {
+          "field": "Input",
+          "value": "Photovoltaic panel (12V system)"
+        },
+        {
+          "field": "Output",
+          "value": "Filtered + UV-sterilized potable water"
+        }
+      ],
+      "bom": [
+        {
+          "component": "Solar Panel",
+          "spec": "10W 12V polycrystalline",
+          "qty": 1
+        },
+        {
+          "component": "Charge Controller",
+          "spec": "PWM 10A",
+          "qty": 1
+        },
+        {
+          "component": "Battery Bank",
+          "spec": "12V 14Ah sealed Li-Ion",
+          "qty": 1
+        },
+        {
+          "component": "UV-C Sterilizer",
+          "spec": "12V DC lamp array",
+          "qty": 1
+        },
+        {
+          "component": "Pressure Pump",
+          "spec": "12V DC submersible",
+          "qty": 1
+        }
+      ],
+      "failureLogs": [
+        {
+          "issue": "Pump rapid-cycles under cloudy conditions",
+          "cause": "Insufficient battery, solar dip triggers cutoff",
+          "resolution": "Increased battery bank; hysteresis on cutoff thresholds"
+        },
+        {
+          "issue": "UV bulb flickers",
+          "cause": "Voltage sag under pump load",
+          "resolution": "Separated UV supply from pump rail with regulator"
+        }
+      ]
+    },
+    {
+      "id": "ascii-engine",
+      "title": "Linux ASCII Media Engine",
+      "category": "software",
+      "icon": "💻",
+      "status": "open-source",
+      "summary": "Real-time video/image to ASCII art renderer for any Linux terminal. Python + OpenCV with 256-color/TrueColor support.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "ANSI",
+        "Terminal",
+        "Linux"
+      ],
+      "systemParams": [
+        {
+          "field": "Goal",
+          "value": "Render video/images as real-time ASCII art in any Linux terminal"
+        },
+        {
+          "field": "Language",
+          "value": "Python 3"
+        },
+        {
+          "field": "Libraries",
+          "value": "OpenCV · NumPy · ANSI escape sequences"
+        },
+        {
+          "field": "Platform",
+          "value": "Any Linux terminal with 256-color/TrueColor"
+        }
+      ],
+      "bom": [],
+      "failureLogs": [],
+      "code": {
+        "lang": "python",
+        "snippet": "ASCII_CHARS = \" .:-=+*#%@\"\n\ndef frame_to_ascii(frame, cols=80, rows=40):\n    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)\n    resized = cv2.resize(gray, (cols, rows * 2))\n    lines = []\n    for row in resized:\n        line = \"\"\n        for pixel in row:\n            idx = int((pixel / 255) * (len(ASCII_CHARS) - 1))\n            line += ASCII_CHARS[idx]\n        lines.append(line)\n    return \"\\n\".join(lines)"
+      }
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/gallery/robot-build-01.jpg",
+      "caption": "Robot Build Session"
+    },
+    {
+      "src": "/gallery/robot-build-02.jpg",
+      "caption": "Circuit Wiring"
+    },
+    {
+      "src": "/gallery/competition-01.jpg",
+      "caption": "Competition Day"
+    },
+    {
+      "src": "/gallery/competition-02.jpg",
+      "caption": "Team Strategy"
+    },
+    {
+      "src": "/gallery/competition-03.jpg",
+      "caption": "Live Run"
+    },
+    {
+      "src": "/gallery/competition-04.jpg",
+      "caption": "Awards Ceremony"
+    },
+    {
+      "src": "/gallery/competition-05.jpg",
+      "caption": "Battle Bot Demo"
+    },
+    {
+      "src": "/gallery/exhibition-01.jpg",
+      "caption": "School Exhibition"
+    },
+    {
+      "src": "/gallery/school-event-01.jpg",
+      "caption": "School Event"
+    },
+    {
+      "src": "/gallery/school-event-02.jpg",
+      "caption": "Lab Work"
+    },
+    {
+      "src": "/gallery/recent-01.jpg",
+      "caption": "Recent Project"
+    },
+    {
+      "src": "/gallery/recent-02.jpg",
+      "caption": "Prototyping"
+    },
+    {
+      "src": "/gallery/early-project-01.jpg",
+      "caption": "Early Build"
+    },
+    {
+      "src": "/gallery/robot-demo-01.mp4",
+      "type": "video",
+      "caption": "Robot Demo"
+    },
+    {
+      "src": "/gallery/robot-demo-02.mp4",
+      "type": "video",
+      "caption": "Speed Run"
+    }
+  ],
+  "contact": {
+    "github": "https://github.com/himanshu-2010",
+    "email": "himanshu.jsr.dev@gmail.com",
+    "instagram": "https://instagram.com/mors__369",
+    "site": "https://himanshu-port.vercel.app"
+  },
+  "ai": {
+    "endpoint": "https://mors369-hermes-model.hf.space",
+    "label": "Orion AI",
+    "model": "orion"
+  }
+}
