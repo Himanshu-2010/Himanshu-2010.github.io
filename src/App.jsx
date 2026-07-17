@@ -112,7 +112,7 @@ export default function App() {
     const t = setTimeout(() => {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+    }, 120);
     return () => clearTimeout(t);
   }, [location]);
 
