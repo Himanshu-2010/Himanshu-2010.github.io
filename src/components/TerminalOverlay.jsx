@@ -222,7 +222,7 @@ function TerminalOverlay() {
           onClick={() => setOpen(false)}
         >
           <div
-            className="liquid-glass-strong rounded-2xl w-full max-w-2xl max-h-[70vh] flex flex-col overflow-hidden"
+            className="liquid-glass-strong rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden box-border"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
@@ -239,24 +239,25 @@ function TerminalOverlay() {
               </button>
             </div>
 
-            <div ref={bodyRef} className="flex-1 overflow-y-auto p-4 font-mono text-sm space-y-1">
+            <div ref={bodyRef} className="flex-1 min-h-0 overflow-y-auto p-4 font-mono text-sm space-y-1">
               {lines.map((l, i) => (
                 <div key={i} className={LINE_CLASS[l.type] || 'text-white'}>
                   {l.text}
                 </div>
               ))}
-              <div className="flex items-center gap-2 pt-1">
-                <span className="text-[var(--accent)] font-mono text-sm">himanshu@dev369:~$</span>
-                <input
-                  ref={inputRef}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={onKeyDown}
-                  autoFocus
-                  spellCheck={false}
-                  className="flex-1 bg-transparent outline-none text-white font-mono text-sm"
-                />
-              </div>
+            </div>
+
+            <div className="flex items-center gap-2 p-3 border-t border-white/10 bg-white/[0.02]">
+              <span className="text-[var(--accent)] font-mono text-sm">himanshu@dev369:~$</span>
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={onKeyDown}
+                autoFocus
+                spellCheck={false}
+                className="flex-1 bg-transparent outline-none text-white font-mono text-sm"
+              />
             </div>
           </div>
         </div>

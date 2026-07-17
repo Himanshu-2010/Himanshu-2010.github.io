@@ -22,23 +22,24 @@ const fragmentShader = /* glsl */ `
 
   void main() {
     vec2 uv = vUv;
-    float t = uTime * 0.05;
-    vec2 m = uMouse * 0.15;
+    float t = uTime * 0.03;
+    vec2 m = uMouse * 0.08;
 
-    float n  = sin((uv.x * 3.0 + t) + sin(uv.y * 4.0 - t * 1.3)) * 0.5 + 0.5;
-    float n2 = sin((uv.y * 3.5 - t * 0.8) + cos(uv.x * 3.0 + t)) * 0.5 + 0.5;
+    float n  = sin((uv.x * 2.0 + t) + sin(uv.y * 2.5 - t)) * 0.5 + 0.5;
+    float n2 = sin((uv.y * 2.2 - t * 0.7) + cos(uv.x * 2.0 + t)) * 0.5 + 0.5;
 
-    vec3 col = mix(uColorA, uColorB, n);
-    col = mix(col, uColorC, n2 * 0.6);
+    vec3 col = uColorA;
+    col = mix(col, uColorB, n * 0.10);
+    col = mix(col, uColorC, n2 * 0.06);
 
     float d = distance(uv, vec2(0.5) + m);
-    col += uColorB * smoothstep(0.6, 0.0, d) * 0.25;
+    col += uColorB * smoothstep(0.7, 0.0, d) * 0.06;
 
-    float vig = smoothstep(1.15, 0.2, distance(uv, vec2(0.5)));
+    float vig = smoothstep(1.25, 0.3, distance(uv, vec2(0.5)));
     col *= vig;
 
-    float g = hash(uv * (uTime + 1.0)) * 0.04;
-    col += g - 0.02;
+    float g = hash(uv * (uTime + 1.0)) * 0.02;
+    col += g - 0.01;
 
     gl_FragColor = vec4(col, 1.0);
   }
