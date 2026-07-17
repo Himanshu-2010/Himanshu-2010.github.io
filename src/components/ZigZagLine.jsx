@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 
+// Full-width zig-zag: swings left <-> right while descending.
 const PATH =
-  'M 15 0 L 6 8 L 24 16 L 6 24 L 24 32 L 6 40 L 24 48 L 6 56 L 24 64 L 6 72 L 24 80 L 15 100';
+  'M 8 0 L 92 10 L 8 20 L 92 30 L 8 40 L 92 50 L 8 60 L 92 70 L 8 80 L 92 90 L 50 100';
 
 const BLUE = [0, 212, 255];
 const RED = [255, 59, 59];
@@ -13,47 +14,56 @@ const mix = (c1, c2, t) =>
   )})`;
 
 export default function ZigZagLine() {
-  const pathRef = useRef(null);
+  const mainRef = useRef(null);
+  const glowRef = useRef(null);
   const headRef = useRef(null);
+  const coreRef = useRef(null);
 
   useEffect(() => {
-    let raf = 0;
-    const update = () => {
+    let raf;
+    const tick = () => {
       const about = document.getElementById('about');
       const start = about ? about.offsetTop : 0;
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const y = window.scrollY;
-      let p = (y - start) / (max - start);
+      let p = (window.scrollY - start) / (max - start);
       p = Math.max(0, Math.min(1, p));
 
-      const path = pathRef.current;
-      if (path) {
-        path.style.strokeDashoffset = String(1 - p);
-        path.style.stroke = mix(BLUE, RED, p);
+      const col = mix(BLUE, RED, p);
+
+      [mainRef.current, glowRef.current].forEach((pth) => {
+        if (!pth) return;
+        pth.style.stroke = col;
+        pth.style.strokeDashoffset = String(1 - p);
+        const blur = pth === glowRef.current ? 14 : 7;
+        pth.style.filter = `drop-shadow(0 0 ${blur}px ${col})`;
+      });
+
+      const main = mainRef.current;
+      if (main) {
+        const len = main.getTotalLength();
+        const pt = main.getPointAtLength(p * len);
+        const pulse = 2.6 + Math.sin(performance.now() / 160) * 1.1;
+        [headRef.current, coreRef.current].forEach((c) => {
+          if (!c) return;
+          c.setAttribute('cx', pt.x);
+          c.setAttribute('cy', pt.y);
+        });
+        if (headRef.current) {
+          headRef.current.setAttribute('r', String(pulse));
+          headRef.current.style.fill = col;
+          headRef.current.style.opacity = p > 0 && p < 1 ? '1' : '0';
+          headRef.current.style.filter = `drop-shadow(0 0 10px ${col})`;
+        }
+        if (coreRef.current) {
+          coreRef.current.setAttribute('r', String(pulse * 0.45));
+          coreRef.current.style.fill = '#ffffff';
+          coreRef.current.style.opacity = p > 0 && p < 1 ? '0.9' : '0';
+        }
       }
-      const head = headRef.current;
-      if (head && path) {
-        const len = path.getTotalLength();
-        const pt = path.getPointAtLength(p * len);
-        head.setAttribute('cx', pt.x);
-        head.setAttribute('cy', pt.y);
-        head.style.fill = mix(BLUE, RED, p);
-        head.style.opacity = p > 0 && p < 1 ? '1' : '0';
-      }
-      raf = 0;
+      raf = requestAnimationFrame(tick);
     };
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(update);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -64,7 +74,21 @@ export default function ZigZagLine() {
       aria-hidden="true"
     >
       <path
-        ref={pathRef}
+        ref={glowRef}
+        d={PATH}
+        fill="none"
+        stroke="#00d4ff"
+        strokeWidth="7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+        pathLength="1"
+        strokeDasharray="1"
+        strokeDashoffset="1"
+        opacity="0.55"
+      />
+      <path
+        ref={mainRef}
         d={PATH}
         fill="none"
         stroke="#00d4ff"
@@ -75,9 +99,9 @@ export default function ZigZagLine() {
         pathLength="1"
         strokeDasharray="1"
         strokeDashoffset="1"
-        style={{ filter: 'drop-shadow(0 0 4px rgba(0,212,255,0.5))' }}
       />
-      <circle ref={headRef} r="2.4" fill="#00d4ff" style={{ opacity: 0 }} />
+      <circle ref={headRef} r="2.6" fill="#00d4ff" style={{ opacity: 0 }} />
+      <circle ref={coreRef} r="1.2" fill="#ffffff" style={{ opacity: 0 }} />
     </svg>
   );
 }
