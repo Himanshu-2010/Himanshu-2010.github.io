@@ -207,14 +207,16 @@ function TerminalOverlay() {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        title="Open terminal (press `)"
-        className="fixed bottom-6 right-6 z-[250] w-12 h-12 flex items-center justify-center liquid-glass-strong rounded-full text-[var(--accent)] hover:scale-110 transition"
-      >
-        <span className="font-mono font-bold">_</span>
-        <span className="text-sm -ml-1">›_</span>
-      </button>
+      <div className="fixed bottom-6 right-6 z-[500]">
+        <button
+          onClick={() => setOpen(true)}
+          title="Open terminal (press `)"
+          className="liquid-glass-strong w-12 h-12 flex items-center justify-center rounded-full text-[var(--accent)] hover:scale-110 transition"
+        >
+          <span className="font-mono font-bold">_</span>
+          <span className="text-sm -ml-1">›_</span>
+        </button>
+      </div>
 
       {open && (
         <div
