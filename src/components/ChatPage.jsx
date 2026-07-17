@@ -15,6 +15,7 @@ export default function ChatPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const scrollRef = useRef();
+  const wakeTimer = useRef();
 
   useEffect(() => {
     checkAiStatus().then(setStatus);
@@ -23,6 +24,31 @@ export default function ChatPage() {
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
+
+  useEffect(() => () => clearTimeout(wakeTimer.current), []);
+
+  // Explicitly wake a sleeping HF Space by polling /health until the model is ready.
+  const wakeModel = () => {
+    if (status === 'warming') return;
+    setStatus('warming');
+    setError(null);
+    let tries = 0;
+    const poll = async () => {
+      const s = await checkAiStatus();
+      if (s === 'online') {
+        setStatus('online');
+        return;
+      }
+      tries += 1;
+      if (tries >= 20) {
+        setStatus('offline');
+        setError('Model is still warming up — try the Wake button again in a moment.');
+        return;
+      }
+      wakeTimer.current = setTimeout(poll, 4000);
+    };
+    poll();
+  };
 
   const handleSend = async () => {
     const text = input.trim();
@@ -87,6 +113,14 @@ export default function ChatPage() {
           >
             {AI_LABEL}: {meta.text}
           </span>
+          {status === 'offline' && (
+            <button
+              onClick={wakeModel}
+              className="ml-2 text-xs font-body px-2 py-0.5 rounded-full border border-white/15 text-white/80 hover:text-white hover:border-white/40 transition"
+            >
+              Wake model ↻
+            </button>
+          )}
         </div>
 
         <div className="liquid-glass-strong rounded-2xl overflow-hidden flex flex-col" style={{ height: '60vh' }}>
