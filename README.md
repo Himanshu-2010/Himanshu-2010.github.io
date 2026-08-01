@@ -2,7 +2,7 @@
 
 **Workshop tinkerer** building hands-on electronics — robotics, embedded systems, PCB design, and the occasional AI experiment.
 
-Currently in ICSE Class X, competing in **ASCENSION**, a school robotics competition with task-based, crossover, and arena combat rounds.
+Currently in ICSE Class X.
 
 ---
 
