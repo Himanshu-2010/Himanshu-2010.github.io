@@ -1,16 +1,37 @@
-# React + Vite
+# Hi, I'm Himanshu 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Workshop tinkerer** building hands-on electronics — robotics, embedded systems, PCB design, and the occasional AI experiment.
 
-Currently, two official plugins are available:
+Currently in ICSE Class X, competing in **ASCENSION**, a school robotics competition with task-based, crossover, and arena combat rounds.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🔧 What I Build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Robotics & RC Systems** — differential-drive rovers, combat bots, and competition robots using Arduino, BTS7960 motor drivers, and FlySky RC control
+- **PCB Design** — custom boards in KiCad, from power management to BLE-enabled wearables
+- **Embedded Firmware** — non-blocking `millis()`-based control loops, failsafe logic, and low-level protocol debugging (iBUS, NRF24L01+, I2C)
+- **AI & Voice Systems** — local + cloud hybrid assistants combining GPIO control with LLM-backed queries
 
-## Expanding the Oxlint configuration
+## 🚀 Featured Projects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**TACHYON X** — RC combat tank on Arduino Mega 2560 with dual L298N motor control, servo-driven turret, NRF24L01+ radio link, and a five-page telemetry display.
+
+**ASCENSION Competition Robot** — Arena combat robot built around dual BTS7960 drivers, 3S Li-ion power with BMS, arcade-style drive mixing, and FlySky FS-i6 RC control.
+
+**Project Orion** — Jarvis-style voice assistant on Raspberry Pi, separating local GPIO control from cloud LLM inference, plus a companion ESP8266 Telegram bot client.
+
+**Custom Split Keyboard** — 60-key ortholinear board on Raspberry Pi Pico running KMK (CircuitPython), with custom LED layer indicators and macro/combo support.
+
+**DIY MP3 Player** — Arduino Nano + DFPlayer Mini build from scrap parts, with full playback controls and custom display patterns.
+
+**ESP32-C3 Smartwatch** — Custom PCB design from scratch with OLED display, BLE, haptics, and health sensors.
+
+## 🛠️ Tools & Tech
+
+`Arduino` `C++` `Python` `KiCad` `CircuitPython` `ESP32` `Raspberry Pi` `Embedded Systems` `PCB Design`
+
+## 📫 Find Me
+
+- Portfolio: [himanshu-2010.github.io](https://himanshu-2010.github.io)
+- GitHub: [@himanshu-2010](https://github.com/himanshu-2010)
